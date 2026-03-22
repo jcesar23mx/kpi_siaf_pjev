@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIAF-PJEV · Tablero de Proyecto</title>
+<style>
+:root {
+  --bg: #f8f8f6; --bg2: #ffffff; --bg3: #f1efe8;
+  --text: #1a1a1a; --text2: #5f5e5a; --text3: #888780;
+  --border: rgba(0,0,0,0.1); --border2: rgba(0,0,0,0.18);
+  --green: #1D9E75; --green-bg: #e1f5ee; --green-text: #085041;
+  --blue: #378ADD;  --blue-bg: #e6f1fb;  --blue-text: #0c447c;
+  --amber: #BA7517; --amber-bg: #faeeda; --amber-text: #412402;
+  --purple:#7F77DD; --purple-bg:#eeedfe; --purple-text:#26215c;
+  --red: #E24B4A;   --red-bg: #fcebeb;   --red-text: #501313;
+  --gray-bg: #f1efe8; --radius: 10px; --radius-sm: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#1a1a1a; --bg2:#242424; --bg3:#2c2c2a;
+    --text:#e8e6e0; --text2:#b4b2a9; --text3:#888780;
+    --border:rgba(255,255,255,0.1); --border2:rgba(255,255,255,0.18);
+    --green-bg:#04342c; --green-text:#9fe1cb;
+    --blue-bg:#042c53;  --blue-text:#b5d4f4;
+    --amber-bg:#412402; --amber-text:#fac775;
+    --purple-bg:#26215c;--purple-text:#cecbf6;
+    --red-bg:#501313;   --red-text:#f7c1c1;
+    --gray-bg:#2c2c2a;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+/* header */
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100}
+.topbar-title{font-size:15px;font-weight:600;flex:1}
+.topbar-sub{font-size:12px;color:var(--text2)}
+.sync-btn{padding:6px 12px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:var(--bg3);color:var(--text);font-size:12px;cursor:pointer;white-space:nowrap}
+.sync-btn:active{opacity:.7}
+/* kpis */
+.kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:12px 16px}
+@media(min-width:600px){.kpi-grid{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px}
+.kpi-val{font-size:20px;font-weight:600;line-height:1.2}
+.kpi-lbl{font-size:11px;color:var(--text2);margin-top:2px}
+.kpi-sub{font-size:11px;color:var(--text3);margin-top:4px;padding-top:4px;border-top:1px solid var(--border)}
+/* filtros */
+.filters{padding:0 16px 10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filter-btn{padding:5px 12px;border-radius:20px;border:1px solid var(--border2);background:var(--bg2);color:var(--text);font-size:12px;cursor:pointer}
+.filter-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.search-wrap{flex:1;min-width:140px}
+.search-wrap input{width:100%;padding:6px 10px;border-radius:20px;border:1px solid var(--border2);background:var(--bg2);color:var(--text);font-size:12px;outline:none}
+/* módulos */
+.modulos{padding:0 16px 80px}
+.mod-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.mod-header{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;user-select:none}
+.mod-header:active{background:var(--bg3)}
+.mod-chevron{font-size:10px;color:var(--text3);transition:transform .2s;flex-shrink:0}
+.mod-chevron.open{transform:rotate(90deg)}
+.mod-name{font-weight:600;font-size:14px;flex:1}
+.mod-stats{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.pct-pill{font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px}
+.done-pill{background:var(--green-bg);color:var(--green-text)}
+.prog-bar{height:4px;border-radius:2px;background:var(--bg3);overflow:hidden;width:50px}
+.prog-fill{height:100%;border-radius:2px;background:var(--green);transition:width .3s}
+/* subsistemas */
+.subsistema{border-top:1px solid var(--border)}
+.sub-header{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--bg3);cursor:pointer}
+.sub-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.sub-name{font-size:12px;font-weight:600;flex:1;color:var(--text2)}
+.sub-count{font-size:11px;color:var(--text3)}
+/* tareas */
+.tarea-row{display:flex;align-items:center;gap:8px;padding:9px 14px;border-top:1px solid var(--border)}
+.tarea-row.done-row{background:var(--green-bg)}
+.chk{width:18px;height:18px;border-radius:4px;border:2px solid var(--border2);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s;background:var(--bg2)}
+.chk.checked{background:var(--green);border-color:var(--green)}
+.chk.checked::after{content:'✓';color:#fff;font-size:11px;font-weight:700}
+.tarea-name{flex:1;font-size:13px;line-height:1.3}
+.tarea-name.done-text{color:var(--text2);text-decoration:line-through}
+.tipo-tag{font-size:10px;padding:1px 6px;border-radius:8px;font-weight:600;flex-shrink:0}
+.tipo-A{background:var(--green-bg);color:var(--green-text)}
+.tipo-B{background:var(--blue-bg);color:var(--blue-text)}
+.tipo-C{background:var(--amber-bg);color:var(--amber-text)}
+.tipo-dash{background:var(--gray-bg);color:var(--text3)}
+.resp-sel{font-size:11px;padding:3px 6px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:var(--bg2);color:var(--text);cursor:pointer;max-width:90px}
+/* loading / error */
+.state-msg{text-align:center;padding:40px 20px;color:var(--text2);font-size:14px}
+.spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:8px 18px;border-radius:20px;font-size:12px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.show{opacity:1}
+/* config banner */
+.config-banner{background:var(--amber-bg);border:1px solid var(--amber);border-radius:var(--radius);margin:12px 16px;padding:12px 14px;font-size:13px;color:var(--amber-text)}
+.config-banner a{color:var(--amber-text);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-title">SIAF-PJEV</div>
+    <div class="topbar-sub">Poder Judicial · Veracruz</div>
+  </div>
+  <button class="sync-btn" onclick="cargarDatos()">↻ Sincronizar</button>
+</div>
+
+<div id="config-banner" class="config-banner" style="display:none">
+  ⚙️ <strong>Configura tu URL de Apps Script</strong> — abre el archivo <code>index.html</code>, busca <code>APPS_SCRIPT_URL</code> y pega tu URL de despliegue. <a href="#" onclick="mostrarInstrucciones()">Ver instrucciones</a>
+</div>
+
+<div class="kpi-grid">
+  <div class="kpi">
+    <div class="kpi-val" id="kpi-avance" style="color:var(--green)">—</div>
+    <div class="kpi-lbl">Avance real</div>
+    <div class="kpi-sub" id="kpi-tareas">Cargando...</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-val" id="kpi-pts" style="color:var(--blue)">—</div>
+    <div class="kpi-lbl">Puntos terminados</div>
+    <div class="kpi-sub" id="kpi-pts-sub">de 271 pts totales</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-val" id="kpi-dias" style="color:var(--amber)">—</div>
+    <div class="kpi-lbl">Días consumidos</div>
+    <div class="kpi-sub" id="kpi-dias-sub">equipo 4 personas</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-val" id="kpi-rest" style="color:var(--text2)">—</div>
+    <div class="kpi-lbl">Días restantes</div>
+    <div class="kpi-sub" id="kpi-rest-sub">para completar</div>
+  </div>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" onclick="filtrar('todos',this)">Todos</button>
+  <button class="filter-btn" onclick="filtrar('pendientes',this)">Pendientes</button>
+  <button class="filter-btn" onclick="filtrar('terminados',this)">Terminados</button>
+  <div class="search-wrap"><input id="search" placeholder="Buscar tarea..." oninput="renderTareas()"></div>
+</div>
+
+<div class="modulos" id="modulos">
+  <div class="state-msg"><div class="spinner"></div>Cargando tareas...</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════════
+// ⚠️  PEGA AQUÍ TU URL DE APPS SCRIPT DESPUÉS DE DESPLEGAR
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyI4dwaDYzO2fAXD3k2F5Y4xh42FGI-bwVJMdS_8pLN6XM4rfZRHqUiQhkSJE8KMDzP/exec";
+// ══════════════════════════════════════════════════════
+
+const MIEMBROS = ["Julio César","Cristian","Eunice","Joshua",""];
+const TIPOS_MIN = {A:100,B:380,C:730,"—":0};
+const TIPOS_PTS = {A:1,B:2,C:3,"—":0};
+const MINS_DIA_EQUIPO = 4*480;
+const CAT_COLORS = {Catálogos:"#1D9E75",Registros:"#378ADD",Procesos:"#BA7517",Informes:"#7F77DD"};
+const MODS_ORDER = ["0. Cfg. Inicial","1. Contabilidad","2. C. Presupuestal","3. Ctas. por Pagar","4. Bancos","5. Ctas. por Cobrar","6. Adquisiciones"];
+
+let tareas = [];
+let filtroActivo = "todos";
+let modAbiertos = new Set(["0. Cfg. Inicial","1. Contabilidad"]);
+
+async function cargarDatos() {
+  if (APPS_SCRIPT_URL === "TU_URL_DE_APPS_SCRIPT_AQUI") {
+    document.getElementById("config-banner").style.display = "block";
+    cargarDemo();
+    return;
+  }
+  document.getElementById("modulos").innerHTML = '<div class="state-msg"><div class="spinner"></div>Sincronizando con Google Sheets...</div>';
+  try {
+    const res = await fetch(APPS_SCRIPT_URL + "?action=getTareas");
+    const data = await res.json();
+    if (data.ok) {
+      tareas = data.tareas;
+      renderTodo();
+      mostrarToast("Sincronizado correctamente");
+    }
+  } catch(e) {
+    mostrarToast("Error de conexión — usando datos locales");
+    cargarDemo();
+  }
+}
+
+function cargarDemo() {
+  tareas = TAREAS_DEMO;
+  renderTodo();
+}
+
+async function toggleDone(id) {
+  const t = tareas.find(x=>x.id==id);
+  if (!t) return;
+  t.done = t.done === "✓" ? "" : "✓";
+  renderTodo();
+  if (APPS_SCRIPT_URL !== "TU_URL_DE_APPS_SCRIPT_AQUI") {
+    try {
+      await fetch(APPS_SCRIPT_URL, {method:"POST",body:JSON.stringify({action:"updateTarea",id,field:"done",value:t.done==="✓"})});
+      mostrarToast(t.done==="✓" ? "Tarea marcada como terminada" : "Tarea desmarcada");
+    } catch(e){ mostrarToast("Guardado localmente"); }
+  } else { mostrarToast(t.done==="✓" ? "✓ Marcada (demo)" : "Desmarcada (demo)"); }
+}
+
+async function cambiarResponsable(id, valor) {
+  const t = tareas.find(x=>x.id==id);
+  if (!t) return;
+  t.responsable = valor;
+  if (APPS_SCRIPT_URL !== "TU_URL_DE_APPS_SCRIPT_AQUI") {
+    try {
+      await fetch(APPS_SCRIPT_URL, {method:"POST",body:JSON.stringify({action:"updateTarea",id,field:"responsable",value:valor})});
+      mostrarToast("Responsable actualizado");
+    } catch(e){ mostrarToast("Guardado localmente"); }
+  } else { mostrarToast("Responsable actualizado (demo)"); }
+}
+
+function filtrar(f, btn) {
+  filtroActivo = f;
+  document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  renderTareas();
+}
+
+function tareasFiltradas() {
+  const q = document.getElementById("search").value.toLowerCase();
+  return tareas.filter(t => {
+    const matchQ = !q || t.tarea.toLowerCase().includes(q) || t.modulo.toLowerCase().includes(q) || t.subsistema.toLowerCase().includes(q);
+    const matchF = filtroActivo==="todos" || (filtroActivo==="terminados" && t.done==="✓") || (filtroActivo==="pendientes" && t.done!=="✓");
+    return matchQ && matchF;
+  });
+}
+
+function calcularKPIs() {
+  const total = tareas.length;
+  const term = tareas.filter(t=>t.done==="✓").length;
+  const ptsTotal = tareas.reduce((s,t)=>s+TIPOS_PTS[t.tipo],0);
+  const ptsTerm = tareas.filter(t=>t.done==="✓").reduce((s,t)=>s+TIPOS_PTS[t.tipo],0);
+  const minsTerm = tareas.filter(t=>t.done==="✓").reduce((s,t)=>s+TIPOS_MIN[t.tipo],0);
+  const minsTotal = tareas.reduce((s,t)=>s+TIPOS_MIN[t.tipo],0);
+  const avance = ptsTotal>0 ? Math.round(ptsTerm/ptsTotal*100) : 0;
+  const diasCons = (minsTerm/MINS_DIA_EQUIPO).toFixed(1);
+  const diasRest = ((minsTotal-minsTerm)/MINS_DIA_EQUIPO).toFixed(1);
+  document.getElementById("kpi-avance").textContent = avance+"%";
+  document.getElementById("kpi-tareas").textContent = term+" / "+total+" tareas";
+  document.getElementById("kpi-pts").textContent = ptsTerm+" / "+ptsTotal;
+  document.getElementById("kpi-pts-sub").textContent = "puntos terminados";
+  document.getElementById("kpi-dias").textContent = diasCons;
+  document.getElementById("kpi-dias-sub").textContent = "días equipo consumidos";
+  document.getElementById("kpi-rest").textContent = diasRest;
+  document.getElementById("kpi-rest-sub").textContent = "días equipo restantes";
+}
+
+function renderTodo() {
+  calcularKPIs();
+  renderTareas();
+}
+
+function renderTareas() {
+  const vis = tareasFiltradas();
+  const cont = document.getElementById("modulos");
+  if (!vis.length) { cont.innerHTML='<div class="state-msg">Sin resultados</div>'; return; }
+
+  const porMod = {};
+  MODS_ORDER.forEach(m => porMod[m] = {});
+  vis.forEach(t => {
+    if (!porMod[t.modulo]) porMod[t.modulo] = {};
+    if (!porMod[t.modulo][t.subsistema]) porMod[t.modulo][t.subsistema] = [];
+    porMod[t.modulo][t.subsistema].push(t);
+  });
+
+  let html = "";
+  MODS_ORDER.forEach(mod => {
+    const subs = porMod[mod];
+    if (!subs || !Object.keys(subs).length) return;
+    const allTareas = Object.values(subs).flat();
+    const term = allTareas.filter(t=>t.done==="✓").length;
+    const pct = allTareas.length ? Math.round(term/allTareas.length*100) : 0;
+    const isOpen = modAbiertos.has(mod);
+    const pctColor = pct===100?"done-pill":pct>0?"pct-pill":"pct-pill";
+    const pctBg = pct===100?"var(--green)":pct>0?"var(--blue)":"var(--text3)";
+
+    html += `<div class="mod-card">
+      <div class="mod-header" onclick="toggleMod('${mod.replace(/'/g,"\\'")}')">
+        <span class="mod-chevron ${isOpen?'open':''}">▶</span>
+        <span class="mod-name">${mod}</span>
+        <div class="mod-stats">
+          <span class="pct-pill" style="background:${pctBg};color:#fff">${pct}%</span>
+          <div class="prog-bar"><div class="prog-fill" style="width:${pct}%"></div></div>
+          <span style="font-size:11px;color:var(--text3)">${term}/${allTareas.length}</span>
+        </div>
+      </div>`;
+
+    if (isOpen) {
+      ["Catálogos","Registros","Procesos","Informes"].forEach(sub => {
+        const items = subs[sub];
+        if (!items || !items.length) return;
+        const dotColor = CAT_COLORS[sub]||"#888780";
+        const subTerm = items.filter(t=>t.done==="✓").length;
+        html += `<div class="subsistema">
+          <div class="sub-header">
+            <span class="sub-dot" style="background:${dotColor}"></span>
+            <span class="sub-name">${sub}</span>
+            <span class="sub-count">${subTerm}/${items.length}</span>
+          </div>`;
+        items.forEach(t => {
+          const isDone = t.done==="✓";
+          const tipoClass = t.tipo==="A"?"tipo-A":t.tipo==="B"?"tipo-B":t.tipo==="C"?"tipo-C":"tipo-dash";
+          const respOpts = MIEMBROS.map(m=>`<option value="${m}" ${t.responsable===m?"selected":""}>${m||"Sin asignar"}</option>`).join("");
+          html += `<div class="tarea-row ${isDone?"done-row":""}">
+            <div class="chk ${isDone?"checked":""}" onclick="toggleDone(${t.id})"></div>
+            <span class="tarea-name ${isDone?"done-text":""}">${t.tarea}</span>
+            <span class="tipo-tag ${tipoClass}">${t.tipo}</span>
+            <select class="resp-sel" onchange="cambiarResponsable(${t.id},this.value)">${respOpts}</select>
+          </div>`;
+        });
+        html += `</div>`;
+      });
+    }
+    html += `</div>`;
+  });
+  cont.innerHTML = html;
+}
+
+function toggleMod(mod) {
+  if (modAbiertos.has(mod)) modAbiertos.delete(mod);
+  else modAbiertos.add(mod);
+  renderTareas();
+}
+
+function mostrarToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"), 2200);
+}
+
+function mostrarInstrucciones() {
+  alert("Pasos para configurar:\n\n1. Ve a script.google.com\n2. Crea un nuevo proyecto\n3. Pega el contenido de Code.gs\n4. Clic en Implementar > Nueva implementación\n5. Tipo: Aplicación web\n6. Acceso: Cualquier usuario\n7. Copia la URL y pégala en APPS_SCRIPT_URL en este archivo");
+}
+
+// Demo data (primeras 30 tareas para previsualización sin conexión)
+const TAREAS_DEMO = [
+  {id:1,modulo:"0. Cfg. Inicial",subsistema:"Catálogos",tarea:"Sistemas",tipo:"A",done:"✓",responsable:"Julio César",min_total:100},
+  {id:2,modulo:"0. Cfg. Inicial",subsistema:"Catálogos",tarea:"Subsistemas",tipo:"A",done:"✓",responsable:"Julio César",min_total:100},
+  {id:3,modulo:"0. Cfg. Inicial",subsistema:"Catálogos",tarea:"Módulos",tipo:"A",done:"✓",responsable:"Julio César",min_total:100},
+  {id:4,modulo:"0. Cfg. Inicial",subsistema:"Catálogos",tarea:"Roles",tipo:"A",done:"✓",responsable:"Julio César",min_total:100},
+  {id:5,modulo:"0. Cfg. Inicial",subsistema:"Catálogos",tarea:"Grupos de Trabajo",tipo:"A",done:"✓",responsable:"Julio César",min_total:100},
+  {id:6,modulo:"0. Cfg. Inicial",subsistema:"Catálogos",tarea:"Usuarios",tipo:"A",done:"✓",responsable:"Julio César",min_total:100},
+  {id:11,modulo:"0. Cfg. Inicial",subsistema:"Catálogos",tarea:"Proveedores",tipo:"A",done:"✓",responsable:"Cristian",min_total:100},
+  {id:15,modulo:"0. Cfg. Inicial",subsistema:"Catálogos",tarea:"Bancos",tipo:"A",done:"✓",responsable:"Eunice",min_total:100},
+  {id:16,modulo:"0. Cfg. Inicial",subsistema:"Catálogos",tarea:"Chequeras",tipo:"B",done:"✓",responsable:"Joshua",min_total:380},
+  {id:27,modulo:"0. Cfg. Inicial",subsistema:"Procesos",tarea:"Wizard de configuración inicial",tipo:"B",done:"✓",responsable:"Julio César",min_total:380},
+  {id:29,modulo:"0. Cfg. Inicial",subsistema:"Informes",tarea:"Bitácora de auditoría",tipo:"B",done:"✓",responsable:"Julio César",min_total:380},
+  {id:30,modulo:"1. Contabilidad",subsistema:"Catálogos",tarea:"Catálogo de Cuentas (SCG)",tipo:"C",done:"✓",responsable:"Julio César",min_total:730},
+  {id:31,modulo:"1. Contabilidad",subsistema:"Catálogos",tarea:"Bienes inmuebles",tipo:"A",done:"",responsable:"",min_total:100},
+  {id:32,modulo:"1. Contabilidad",subsistema:"Registros",tarea:"Pólizas Contables",tipo:"C",done:"",responsable:"",min_total:730},
+  {id:33,modulo:"1. Contabilidad",subsistema:"Registros",tarea:"Pólizas Presupuestales",tipo:"C",done:"",responsable:"",min_total:730},
+  {id:39,modulo:"1. Contabilidad",subsistema:"Procesos",tarea:"Apertura / Cierre de mes",tipo:"C",done:"",responsable:"",min_total:730},
+  {id:46,modulo:"1. Contabilidad",subsistema:"Informes",tarea:"Libro diario",tipo:"B",done:"",responsable:"",min_total:380},
+  {id:51,modulo:"1. Contabilidad",subsistema:"Informes",tarea:"Balanza de Comprobación",tipo:"C",done:"",responsable:"",min_total:730},
+  {id:65,modulo:"2. C. Presupuestal",subsistema:"Registros",tarea:"Asignación Presupuestal",tipo:"C",done:"",responsable:"",min_total:730},
+  {id:73,modulo:"2. C. Presupuestal",subsistema:"Procesos",tarea:"Validación afectaciones pedidos",tipo:"C",done:"",responsable:"",min_total:730},
+  {id:77,modulo:"2. C. Presupuestal",subsistema:"Informes",tarea:"Presupuesto con desglose mensual",tipo:"A",done:"",responsable:"",min_total:100},
+  {id:82,modulo:"3. Ctas. por Pagar",subsistema:"Registros",tarea:"Registro de Pagos Directos",tipo:"C",done:"",responsable:"",min_total:730},
+  {id:86,modulo:"3. Ctas. por Pagar",subsistema:"Procesos",tarea:"Verificación disponibilidad presup.",tipo:"B",done:"",responsable:"",min_total:380},
+  {id:90,modulo:"3. Ctas. por Pagar",subsistema:"Informes",tarea:"Reporte Multicriterio Ctas. Pagar",tipo:"B",done:"",responsable:"",min_total:380},
+  {id:92,modulo:"4. Bancos",subsistema:"Registros",tarea:"Reintegros en efectivo e ingresos",tipo:"C",done:"",responsable:"",min_total:730},
+  {id:95,modulo:"4. Bancos",subsistema:"Procesos",tarea:"Conciliación bancaria",tipo:"B",done:"",responsable:"",min_total:380},
+  {id:98,modulo:"4. Bancos",subsistema:"Informes",tarea:"Reporte de Cheques",tipo:"A",done:"",responsable:"",min_total:100},
+  {id:100,modulo:"5. Ctas. por Cobrar",subsistema:"Catálogos",tarea:"Conceptos de cobro",tipo:"B",done:"",responsable:"",min_total:380},
+  {id:106,modulo:"6. Adquisiciones",subsistema:"Catálogos",tarea:"Lugares / Plazos / Departamentos",tipo:"A",done:"",responsable:"",min_total:100},
+  {id:111,modulo:"6. Adquisiciones",subsistema:"Registros",tarea:"Solicitudes / Requisiciones",tipo:"C",done:"",responsable:"",min_total:730}
+];
+
+cargarDatos();
+</script>
+</body>
+</html>

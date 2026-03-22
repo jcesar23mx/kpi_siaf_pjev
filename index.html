@@ -3,165 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SIAF-PJEV · KPI - 2.0</title>
+<title>SIAF-PJEV KPI</title>
 <style>
-:root{
-  --bg:#f5f5f3;--bg2:#fff;--bg3:#f0ede6;
-  --t:#1a1a1a;--t2:#5f5e5a;--t3:#888780;
-  --bd:rgba(0,0,0,.1);--bd2:rgba(0,0,0,.18);
-  --gr:#1D9E75;--grb:#e1f5ee;--grt:#085041;
-  --bl:#378ADD;--blb:#e6f1fb;--blt:#0c447c;
-  --am:#BA7517;--amb:#faeeda;--amt:#412402;
-  --pu:#7F77DD;--pub:#eeedfe;--put:#26215c;
-  --r:10px;--rs:6px;
-}
-@media(prefers-color-scheme:dark){:root{
-  --bg:#1a1a1a;--bg2:#242424;--bg3:#2c2c2a;
-  --t:#e8e6e0;--t2:#b4b2a9;--t3:#888780;
-  --bd:rgba(255,255,255,.1);--bd2:rgba(255,255,255,.18);
-  --grb:#04342c;--grt:#9fe1cb;--blb:#042c53;--blt:#b5d4f4;
-  --amb:#412402;--amt:#fac775;--pub:#26215c;--put:#cecbf6;
-}}
+:root{--bg:#f5f5f3;--bg2:#fff;--bg3:#f0ede6;--t:#1a1a1a;--t2:#5f5e5a;--t3:#888780;--bd:rgba(0,0,0,.1);--bd2:rgba(0,0,0,.18);--gr:#1D9E75;--grb:#e1f5ee;--grt:#085041;--bl:#378ADD;--blb:#e6f1fb;--blt:#0c447c;--am:#BA7517;--amb:#faeeda;--amt:#412402;--pu:#7F77DD;--r:10px;--rs:6px}
+@media(prefers-color-scheme:dark){:root{--bg:#1a1a1a;--bg2:#242424;--bg3:#2c2c2a;--t:#e8e6e0;--t2:#b4b2a9;--t3:#888780;--bd:rgba(255,255,255,.1);--bd2:rgba(255,255,255,.18);--grb:#04342c;--grt:#9fe1cb;--blb:#042c53;--blt:#b5d4f4;--amb:#412402;--amt:#fac775}}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);font-size:14px;line-height:1.4}
-/* topbar */
 .top{background:var(--bg2);border-bottom:1px solid var(--bd);padding:10px 14px;display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:100;flex-wrap:wrap}
-.top-t{font-size:15px;font-weight:600;flex:1}
-.top-s{font-size:11px;color:var(--t2)}
-.btn{padding:6px 11px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg3);color:var(--t);font-size:12px;cursor:pointer;white-space:nowrap}
-.btn:active{opacity:.7}
-/* tabs */
+.top-t{font-size:15px;font-weight:600;flex:1}.top-s{font-size:11px;color:var(--t2)}
+.btn{padding:6px 11px;border-radius:var(--rs);border:1px solid var(--bd2);background:var(--bg3);color:var(--t);font-size:12px;cursor:pointer}.btn:active{opacity:.7}
 .tabs{display:flex;border-bottom:1px solid var(--bd);background:var(--bg2);overflow-x:auto}
 .tab{padding:10px 16px;font-size:13px;color:var(--t2);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
 .tab.on{color:var(--bl);border-color:var(--bl);font-weight:500}
-/* kpi grid */
 .kg{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;padding:10px 14px}
 @media(min-width:580px){.kg{grid-template-columns:repeat(4,1fr)}}
 .kc{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:10px 12px}
-.kv{font-size:19px;font-weight:600;line-height:1.2}
-.kl{font-size:11px;color:var(--t2);margin-top:2px}
+.kv{font-size:19px;font-weight:600;line-height:1.2}.kl{font-size:11px;color:var(--t2);margin-top:2px}
 .ks{font-size:11px;color:var(--t3);margin-top:4px;padding-top:4px;border-top:1px solid var(--bd);display:flex;gap:8px;flex-wrap:wrap}
-.ks b{color:var(--t);font-weight:500}
-.ks span{color:var(--am)}
-/* filtros */
+.ks b{color:var(--t);font-weight:500}.ks span{color:var(--am)}
 .fl{padding:8px 14px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 .fb{padding:5px 11px;border-radius:20px;border:1px solid var(--bd2);background:var(--bg2);color:var(--t);font-size:12px;cursor:pointer}
 .fb.on{background:var(--bl);color:#fff;border-color:var(--bl)}
-.sw{flex:1;min-width:120px}
-.sw input{width:100%;padding:6px 10px;border-radius:20px;border:1px solid var(--bd2);background:var(--bg2);color:var(--t);font-size:12px;outline:none}
-/* módulos */
+.sw{flex:1;min-width:120px}.sw input{width:100%;padding:6px 10px;border-radius:20px;border:1px solid var(--bd2);background:var(--bg2);color:var(--t);font-size:12px;outline:none}
 .mods{padding:0 14px 80px}
 .mc{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);margin-bottom:8px;overflow:hidden}
-.mh{display:flex;align-items:center;gap:8px;padding:11px 13px;cursor:pointer;user-select:none}
-.mh:active{background:var(--bg3)}
-.chev{font-size:9px;color:var(--t3);transition:transform .18s;flex-shrink:0}
-.chev.op{transform:rotate(90deg)}
+.mh{display:flex;align-items:center;gap:8px;padding:11px 13px;cursor:pointer;user-select:none}.mh:active{background:var(--bg3)}
+.chev{font-size:9px;color:var(--t3);transition:transform .18s;flex-shrink:0}.chev.op{transform:rotate(90deg)}
 .mn{font-weight:600;font-size:13px;flex:1}
 .ms{display:flex;gap:5px;align-items:center}
 .pp{font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;color:#fff}
 .pb{height:4px;border-radius:2px;background:var(--bg3);overflow:hidden;width:44px}
 .pf{height:100%;border-radius:2px;transition:width .3s}
-/* subsistema */
 .sub{border-top:1px solid var(--bd)}
 .sh{display:flex;align-items:center;gap:7px;padding:7px 13px;background:var(--bg3);cursor:pointer;user-select:none}
-.sh:active{opacity:.8}
 .sd{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.sn{font-size:12px;font-weight:600;flex:1;color:var(--t2)}
-.sc{font-size:11px;color:var(--t3)}
-/* tarea */
-.tr{border-top:1px solid var(--bd);padding:9px 13px}
-.tr.done-r{background:var(--grb)}
+.sn{font-size:12px;font-weight:600;flex:1;color:var(--t2)}.sc{font-size:11px;color:var(--t3)}
+.tr{border-top:1px solid var(--bd);padding:9px 13px}.tr.dr{background:var(--grb)}
 .tr-top{display:flex;align-items:flex-start;gap:7px;margin-bottom:6px}
 .chk{width:18px;height:18px;min-width:18px;border-radius:4px;border:2px solid var(--bd2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;background:var(--bg2);margin-top:1px}
-.chk.on{background:var(--gr);border-color:var(--gr)}
-.chk.on::after{content:'✓';color:#fff;font-size:11px;font-weight:700}
-.tn{flex:1;font-size:13px;line-height:1.35}
-.tn.dt{color:var(--t2);text-decoration:line-through}
+.chk.on{background:var(--gr);border-color:var(--gr)}.chk.on::after{content:"\2713";color:#fff;font-size:11px;font-weight:700}
+.tn{flex:1;font-size:13px;line-height:1.35}.tn.dt{color:var(--t2);text-decoration:line-through}
 .tt{font-size:10px;padding:1px 6px;border-radius:8px;font-weight:600;flex-shrink:0;margin-top:2px}
-.tA{background:var(--grb);color:var(--grt)}
-.tB{background:var(--blb);color:var(--blt)}
-.tC{background:var(--amb);color:var(--amt)}
-.tD{background:var(--bg3);color:var(--t3)}
-/* fases grid */
+.tA{background:var(--grb);color:var(--grt)}.tB{background:var(--blb);color:var(--blt)}.tC{background:var(--amb);color:var(--amt)}.tX{background:var(--bg3);color:var(--t3)}
 .fg{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;margin-bottom:6px}
 @media(min-width:420px){.fg{grid-template-columns:repeat(4,1fr)}}
 .fc{background:var(--bg3);border-radius:var(--rs);padding:7px 8px}
-.fc-l{font-size:9px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
-.fc-m{font-size:11px;font-weight:500;margin-bottom:4px}
-.fc-chk{display:flex;align-items:center;gap:4px;margin-bottom:3px;cursor:pointer}
-.fc-chk-box{width:13px;height:13px;border-radius:3px;border:1.5px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--bg2)}
-.fc-chk-box.on{background:var(--gr);border-color:var(--gr)}
-.fc-chk-box.on::after{content:'✓';color:#fff;font-size:8px;font-weight:700}
-.fc-chk-lbl{font-size:10px;color:var(--t2)}
-.fc-sel{font-size:11px;padding:3px 5px;border-radius:4px;border:1px solid var(--bd2);background:var(--bg2);color:var(--t);width:100%;cursor:pointer;margin-top:2px}
-/* tiempo row */
+.fl2{font-size:9px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.fck{display:flex;align-items:center;gap:4px;margin-bottom:3px;cursor:pointer}
+.fckb{width:13px;height:13px;border-radius:3px;border:1.5px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--bg2)}
+.fckb.on{background:var(--gr);border-color:var(--gr)}.fckb.on::after{content:"\2713";color:#fff;font-size:8px;font-weight:700}
+.fckl{font-size:10px;color:var(--t2)}
+.fcs{font-size:11px;padding:3px 5px;border-radius:4px;border:1px solid var(--bd2);background:var(--bg2);color:var(--t);width:100%;cursor:pointer;margin-top:2px}
 .tr-t{display:flex;gap:10px;flex-wrap:wrap;padding-top:5px;border-top:1px solid var(--bd);font-size:10px;color:var(--t2)}
 .tr-t b{color:var(--t);font-weight:500}
-/* progreso subfases */
-.sf-prog{display:flex;gap:3px;margin-bottom:5px}
-.sf-dot{width:14px;height:14px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;flex-shrink:0}
-/* ======================== TAB FUERZA ======================== */
+.sfp{display:flex;gap:3px;margin-bottom:5px}
+.sfd{width:14px;height:14px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;flex-shrink:0}
 .fw{padding:10px 14px 80px}
-.sys-g{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:12px}
-@media(min-width:480px){.sys-g{grid-template-columns:repeat(4,1fr)}}
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:12px}
+@media(min-width:480px){.sg{grid-template-columns:repeat(4,1fr)}}
 .fcard{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:13px;margin-bottom:10px}
 .fh{display:flex;align-items:center;gap:9px;margin-bottom:10px}
 .av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;flex-shrink:0}
-.fnh{font-size:14px;font-weight:500}
-.fsub{font-size:11px;color:var(--t2)}
-.fpct{margin-left:auto;text-align:right}
-.fpv{font-size:20px;font-weight:600}
-.fpl{font-size:10px;color:var(--t2)}
-/* 4 fase cards */
+.fnh{font-size:14px;font-weight:500}.fsb{font-size:11px;color:var(--t2)}
+.fpc{margin-left:auto;text-align:right}.fpv{font-size:20px;font-weight:600}.fpl{font-size:10px;color:var(--t2)}
 .f4{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:8px}
 .f4c{background:var(--bg3);border-radius:var(--rs);padding:7px 8px}
 .f4l{font-size:9px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
-.f4v{font-size:13px;font-weight:500}
-.f4m{font-size:10px;color:var(--t2);margin-top:1px}
-/* barra */
+.f4v{font-size:13px;font-weight:500}.f4m{font-size:10px;color:var(--t2);margin-top:1px}
 .fbh{display:flex;justify-content:space-between;font-size:11px;color:var(--t2);margin-bottom:3px}
 .fbar{height:7px;border-radius:4px;background:var(--bg3);overflow:hidden}
 .fbar-f{height:100%;border-radius:4px}
-/* tiempo grid */
 .ftg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:7px}
 .ftc{background:var(--bg3);border-radius:var(--rs);padding:6px 8px}
-.ftl{font-size:10px;color:var(--t2)}
-.ftv{display:flex;gap:5px;margin-top:2px;align-items:baseline}
-.ftn{font-size:12px;font-weight:500}
-.ftr{font-size:11px;color:var(--am)}
-/* leyenda fases */
-.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--t2);padding:0 14px 8px}
-.leg{display:flex;align-items:center;gap:4px}
-.leg-d{width:8px;height:8px;border-radius:2px}
-/* toast */
+.ftl{font-size:10px;color:var(--t2)}.ftv{display:flex;gap:5px;margin-top:2px;align-items:baseline}
+.ftn{font-size:12px;font-weight:500}.ftr{font-size:11px;color:var(--am)}
+.dv{height:0.5px;background:var(--bd);margin:7px 0}
+.leg{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--t2);padding:0 14px 8px}
+.li{display:flex;align-items:center;gap:4px}.ld{width:8px;height:8px;border-radius:2px}
 .toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:7px 16px;border-radius:20px;font-size:12px;z-index:999;opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap}
 .toast.on{opacity:1}
-/* loading */
-.ld{text-align:center;padding:40px 20px;color:var(--t2)}
-.spin{width:26px;height:26px;border:3px solid var(--bd);border-top-color:var(--bl);border-radius:50%;animation:sp .7s linear infinite;margin:0 auto 10px}
+.spin{width:26px;height:26px;border:3px solid var(--bd);border-top-color:var(--bl);border-radius:50%;animation:sp .7s linear infinite;margin:10px auto}
 @keyframes sp{to{transform:rotate(360deg)}}
-.divider{height:0.5px;background:var(--bd);margin:7px 0}
 </style>
 </head>
 <body>
-
 <div class="top">
-  <div><div class="top-t">SIAF-PJEV</div><div class="top-s">Poder Judicial · Veracruz · 126 tareas × 4 fases</div></div>
+  <div><div class="top-t">SIAF-PJEV</div><div class="top-s">Poder Judicial &middot; Veracruz &middot; 126 tareas x 4 fases = 504</div></div>
   <button class="btn" onclick="guardar()">&#8593; Guardar</button>
   <button class="btn" onclick="sincronizar()">&#8635; Sync</button>
 </div>
-
 <div class="tabs">
-  <div class="tab on" onclick="tab('t',this)">Tablero</div>
-  <div class="tab" onclick="tab('f',this)">Fuerza de trabajo</div>
+  <div class="tab on" onclick="cambiaTab('t',this)">Tablero</div>
+  <div class="tab" onclick="cambiaTab('f',this)">Fuerza de trabajo</div>
 </div>
-
 <div id="pT">
   <div class="kg">
-    <div class="kc"><div class="kv" id="kAv" style="color:var(--gr)">—</div><div class="kl">Avance real</div><div class="ks" id="kTr">—</div></div>
-    <div class="kc"><div class="kv" id="kSub" style="color:var(--pu)">—</div><div class="kl">Subfases terminadas</div><div class="ks" id="kSubS">de 504 subfases</div></div>
-    <div class="kc"><div class="kv" id="kMin" style="color:var(--am)">—</div><div class="kl">Min. consumidos</div><div class="ks" id="kMinS">—</div></div>
-    <div class="kc"><div class="kv" id="kRest" style="color:var(--t2)">—</div><div class="kl">Días restantes</div><div class="ks" id="kRestS">—</div></div>
+    <div class="kc"><div class="kv" id="kAv" style="color:var(--gr)">--</div><div class="kl">Avance real</div><div class="ks" id="kTr">--</div></div>
+    <div class="kc"><div class="kv" id="kSf" style="color:var(--pu)">--</div><div class="kl">Subfases completas</div><div class="ks" id="kSfS">de 504</div></div>
+    <div class="kc"><div class="kv" id="kMn" style="color:var(--am)">--</div><div class="kl">Min. consumidos</div><div class="ks" id="kMnS">--</div></div>
+    <div class="kc"><div class="kv" id="kRs" style="color:var(--t2)">--</div><div class="kl">Dias restantes</div><div class="ks" id="kRsS">--</div></div>
   </div>
   <div class="fl">
     <button class="fb on" onclick="filt('t',this)">Todos</button>
@@ -169,362 +109,266 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <button class="fb" onclick="filt('d',this)">Terminados</button>
     <div class="sw"><input id="srch" placeholder="Buscar..." oninput="render()"></div>
   </div>
-  <div class="legend">
-    <span class="leg"><span class="leg-d" style="background:#5C6BC0"></span>Análisis</span>
-    <span class="leg"><span class="leg-d" style="background:#26A69A"></span>Desarrollo</span>
-    <span class="leg"><span class="leg-d" style="background:#FFA726"></span>Revisión</span>
-    <span class="leg"><span class="leg-d" style="background:#EC407A"></span>Validación</span>
-    <span class="leg"><span class="leg-d" style="background:var(--gr)"></span>Completado</span>
+  <div class="leg">
+    <span class="li"><span class="ld" style="background:#5C6BC0"></span>Analisis</span>
+    <span class="li"><span class="ld" style="background:#26A69A"></span>Desarrollo</span>
+    <span class="li"><span class="ld" style="background:#FFA726"></span>Revision</span>
+    <span class="li"><span class="ld" style="background:#EC407A"></span>Validacion</span>
   </div>
-  <div class="mods" id="modsCont"><div class="ld"><div class="spin"></div>Cargando...</div></div>
+  <div class="mods" id="MC"><div style="text-align:center;padding:40px"><div class="spin"></div>Cargando...</div></div>
 </div>
-
 <div id="pF" style="display:none">
-  <div class="fw" id="fuerzaCont"><div class="ld"><div class="spin"></div>Calculando...</div></div>
+  <div class="fw" id="FC"><div style="text-align:center;padding:40px"><div class="spin"></div>Calculando...</div></div>
 </div>
-
-<div class="toast" id="toast"></div>
-
+<div class="toast" id="tst"></div>
 <script>
-const URL_GAS = "https://script.google.com/macros/s/AKfycbxoy05fpGvPruH9NeIipaGYLbvyJgcNPNjhXZC2tb8C-W8H_meuYfOgJtzzoF1cZvZb/exec";
-
-const MODS  = ["0. Cfg. Inicial","1. Contabilidad","2. C. Presupuestal","3. Ctas. por Pagar","4. Bancos","5. Ctas. por Cobrar","6. Adquisiciones"];
-const SUBS  = ["Catálogos","Registros","Procesos","Informes"];
-const CAT_C = {Catálogos:"#1D9E75",Registros:"#378ADD",Procesos:"#BA7517",Informes:"#7F77DD"};
-const MIEMB = ["Julio César","Cristian","Eunice","Joshua",""];
-const COLORES= {"Julio César":["#E8EAF6","#283593","#3949AB"],"Eunice":["#E8F5E9","#1B5E20","#388E3C"],"Joshua":["#FFF3E0","#E65100","#F57C00"],"Cristian":["#FCE4EC","#880E4F","#C2185B"]};
-const INI   = {"Julio César":"JC","Eunice":"EU","Joshua":"JO","Cristian":"CR"};
-const PTS   = {A:1,B:2,C:3,"—":0};
-const FASE_C= {analisis:"#5C6BC0",desarrollo:"#26A69A",revision:"#FFA726",validacion:"#EC407A"};
-const FASES = ["analisis","desarrollo","revision","validacion"];
-const FASE_L= {analisis:"Análisis",desarrollo:"Desarrollo",revision:"Revisión",validacion:"Validación"};
-const MINS_F= {
-  A:{analisis:20,desarrollo:40,revision:20,validacion:20},
-  B:{analisis:40,desarrollo:300,revision:20,validacion:20},
-  C:{analisis:90,desarrollo:600,revision:20,validacion:20},
-  "—":{analisis:0,desarrollo:0,revision:0,validacion:0}
-};
-const D=480,W=2400,M=9600,N=4;
-const TOTAL_SUBFASES = 504;
-
-let tareas = [{"id":1,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Sistemas","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":2,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Subsistemas","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":3,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Módulos","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":4,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Roles","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":5,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Grupos de Trabajo","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":6,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Usuarios","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":7,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Datos de la Entidad","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":8,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Ejercicios Fiscales","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":9,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Períodos Contables","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":10,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Unidades Administrativas","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":11,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Proveedores","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Cristian","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":12,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Empleados","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":13,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Terceros institucionales","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Cristian","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":14,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Terceros beneficiarios","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Cristian","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":15,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Bancos","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Eunice","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":16,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Chequeras","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":17,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Conceptos Bancarios","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":18,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Tipo de Conceptos Bancarios","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":19,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"COG (Clasificador Obj. Gasto)","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Eunice","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":20,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"CRI (Clasificador Rubro Ing.)","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"Eunice","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":21,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Fuentes de Financiamiento","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Cristian","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":22,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Programas","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":23,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Subprogramas","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":24,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Proyectos","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":25,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"Centros de Costos","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"Cristian","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":26,"modulo":"0. Cfg. Inicial","subsistema":"Catálogos","tarea":"CUCOP","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"Eunice","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":27,"modulo":"0. Cfg. Inicial","subsistema":"Procesos","tarea":"Wizard de configuración inicial","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":28,"modulo":"0. Cfg. Inicial","subsistema":"Procesos","tarea":"Administrador de usuarios","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":29,"modulo":"0. Cfg. Inicial","subsistema":"Informes","tarea":"Bitácora de auditoría","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"Julio César","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":30,"modulo":"1. Contabilidad","subsistema":"Catálogos","tarea":"Catálogo de Cuentas (SCG)","tipo":"C","pts":3,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":31,"modulo":"1. Contabilidad","subsistema":"Catálogos","tarea":"Bienes inmuebles","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":32,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Pólizas Contables","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":33,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Pólizas Presupuestales","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":34,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Afectación contable individual","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":35,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Histórico","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":36,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Filtros","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":37,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Exportar a Excel","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":38,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Modificaciones a interfaz de registro","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":39,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Apertura / Cierre de mes contable","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":40,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Cierre de mes — consolidación por usuario","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":41,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Contabilidad maestra","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":42,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Devolver pólizas individuales","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":43,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Procesar pólizas","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":44,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Afectar pólizas","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":45,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Deshacer cierre","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":46,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Libro diario","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":47,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Libro mayor (Auxiliar contable)","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":48,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Actualizaciones a visualización de reportes","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":49,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Avance presupuestal de egresos","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":50,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Avance presupuestal de ingresos","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":51,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Balanza de Comprobación","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":52,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado de actividades","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":53,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado de situación financiera","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":54,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado de cambios a la situación financiera","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":55,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado analítico del activo","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":56,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado analítico de deuda y otros pasivos","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":57,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado de variación de Hacienda Pública","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":58,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado de Flujo de Efectivo","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":59,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Notas a los estados financieros (12)","tipo":"—","pts":0,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":0,"min_desarrollo":0,"min_revision":0,"min_validacion":0,"min_total":0,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":60,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"*Libro de inventarios","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":61,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"*Libro de almacén","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":62,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"*Póliza de depreciación","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":63,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"*Póliza de almacén","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":64,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"*Póliza de nóminas","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":65,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Asignación Presupuestal","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":66,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Presupuesto de egresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":67,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Techo presupuestal egresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":68,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Presupuesto de ingresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":69,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Techo presupuestal ingresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":70,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Transferencias Presupuestales","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":71,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Pólizas de apertura presupuestal","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":72,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Pólizas compromiso servicios personales","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":73,"modulo":"2. C. Presupuestal","subsistema":"Procesos","tarea":"Validación afectaciones de pedidos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":74,"modulo":"2. C. Presupuestal","subsistema":"Procesos","tarea":"Validación afectaciones servicios personales","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":75,"modulo":"2. C. Presupuestal","subsistema":"Procesos","tarea":"Validación afectaciones pagos directos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":76,"modulo":"2. C. Presupuestal","subsistema":"Procesos","tarea":"Validación afectaciones conceptos de ingresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":77,"modulo":"2. C. Presupuestal","subsistema":"Informes","tarea":"Presupuesto con desglose mensual","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":78,"modulo":"2. C. Presupuestal","subsistema":"Informes","tarea":"Avance presupuestal de egresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":79,"modulo":"2. C. Presupuestal","subsistema":"Informes","tarea":"Avance presupuestal de ingresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":80,"modulo":"2. C. Presupuestal","subsistema":"Informes","tarea":"Presupuesto Calendarizado","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":81,"modulo":"2. C. Presupuestal","subsistema":"Informes","tarea":"Concentrado de transferencias presupuestales","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":82,"modulo":"3. Ctas. por Pagar","subsistema":"Registros","tarea":"Registro de Pagos Directos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":83,"modulo":"3. Ctas. por Pagar","subsistema":"Registros","tarea":"Registro de Gastos Para Comprobar","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":84,"modulo":"3. Ctas. por Pagar","subsistema":"Registros","tarea":"Registro de Pagos derivados de Pedido","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":85,"modulo":"3. Ctas. por Pagar","subsistema":"Registros","tarea":"Registro de Comprobación de Gastos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":86,"modulo":"3. Ctas. por Pagar","subsistema":"Procesos","tarea":"Verificación de disponibilidad presupuestal","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":87,"modulo":"3. Ctas. por Pagar","subsistema":"Procesos","tarea":"Afectación contable y presupuestal","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":88,"modulo":"3. Ctas. por Pagar","subsistema":"Procesos","tarea":"Pagos de nómina por transferencia electrónica","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":89,"modulo":"3. Ctas. por Pagar","subsistema":"Procesos","tarea":"Pagos de nómina por cheque","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":90,"modulo":"3. Ctas. por Pagar","subsistema":"Informes","tarea":"Reporte Multicriterio Cuentas por Pagar","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":91,"modulo":"3. Ctas. por Pagar","subsistema":"Informes","tarea":"Estado de Cuenta de Gastos a Comprobar","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":92,"modulo":"4. Bancos","subsistema":"Registros","tarea":"Reintegros en efectivo e ingresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":93,"modulo":"4. Bancos","subsistema":"Registros","tarea":"Transferencias entre cuentas bancarias","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":94,"modulo":"4. Bancos","subsistema":"Procesos","tarea":"Afectación contable y presupuestal / Chequeras","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":95,"modulo":"4. Bancos","subsistema":"Procesos","tarea":"Conciliación bancaria","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":96,"modulo":"4. Bancos","subsistema":"Procesos","tarea":"Cancelación de cheques","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":97,"modulo":"4. Bancos","subsistema":"Procesos","tarea":"Cancelación de reintegros","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":98,"modulo":"4. Bancos","subsistema":"Informes","tarea":"Reporte de Cheques","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":99,"modulo":"4. Bancos","subsistema":"Informes","tarea":"Reporte de Ingresos","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":100,"modulo":"5. Ctas. por Cobrar","subsistema":"Catálogos","tarea":"Conceptos de cobro","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":101,"modulo":"5. Ctas. por Cobrar","subsistema":"Registros","tarea":"Registro de cuentas de cobro / Afectación","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":102,"modulo":"5. Ctas. por Cobrar","subsistema":"Procesos","tarea":"Conciliación de pago en plantel","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":103,"modulo":"5. Ctas. por Cobrar","subsistema":"Procesos","tarea":"Conciliación bancaria","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":104,"modulo":"5. Ctas. por Cobrar","subsistema":"Procesos","tarea":"Operaciones bancarias","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":105,"modulo":"5. Ctas. por Cobrar","subsistema":"Informes","tarea":"Reporte Multicriterio Cuentas por Cobrar","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":106,"modulo":"6. Adquisiciones","subsistema":"Catálogos","tarea":"Lugares / Plazos de entrega / Departamentos","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":107,"modulo":"6. Adquisiciones","subsistema":"Catálogos","tarea":"Montos de licitación","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":108,"modulo":"6. Adquisiciones","subsistema":"Catálogos","tarea":"Grupo de productos / Descripción de artículos","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":109,"modulo":"6. Adquisiciones","subsistema":"Catálogos","tarea":"Proveedores-bienes / Unidades de medida","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":110,"modulo":"6. Adquisiciones","subsistema":"Catálogos","tarea":"Tipos de consumibles","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":111,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Solicitudes / Requisiciones — Compras directas","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":112,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Captura cotizaciones (digitalización)","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":113,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Licitaciones — Captura encabezado y detalle","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":114,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Licitaciones — Actas y documentos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":115,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Licitaciones — Captura cotizaciones","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":116,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Pedido / Contrato / Orden de Compra","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":117,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Evaluación técnica y financiera","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":118,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Asignación de compra","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":119,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Generación de requerimiento","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":120,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Licitaciones — Invitar proveedores","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":121,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Licitaciones — Asignación de compra","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":122,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Generar pedidos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":123,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Autorización de pedidos (vinculado a Presupuesto)","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":124,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Modificar / Cancelar pedidos","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":125,"modulo":"6. Adquisiciones","subsistema":"Informes","tarea":"Consultar pedidos (status)","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"},{"id":126,"modulo":"6. Adquisiciones","subsistema":"Informes","tarea":"Facturas (consulta)","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio César","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio César"}];
-let filtro="t", activeTab="t";
-let modOpen = new Set(["0. Cfg. Inicial","1. Contabilidad"]);
-let subOpen = new Set();
-
+var GAS="https://script.google.com/macros/s/AKfycbxoy05fpGvPruH9NeIipaGYLbvyJgcNPNjhXZC2tb8C-W8H_meuYfOgJtzzoF1cZvZb/exec";
+var MODS=["0. Cfg. Inicial","1. Contabilidad","2. C. Presupuestal","3. Ctas. por Pagar","4. Bancos","5. Ctas. por Cobrar","6. Adquisiciones"];
+var SUBS=["Cat\u00e1logos","Registros","Procesos","Informes"];
+var CC={"Cat\u00e1logos":"#1D9E75","Registros":"#378ADD","Procesos":"#BA7517","Informes":"#7F77DD"};
+var MB=["Julio C\u00e9sar","Cristian","Eunice","Joshua",""];
+var COL={"Julio C\u00e9sar":["#E8EAF6","#283593","#3949AB"],"Eunice":["#E8F5E9","#1B5E20","#388E3C"],"Joshua":["#FFF3E0","#E65100","#F57C00"],"Cristian":["#FCE4EC","#880E4F","#C2185B"]};
+var INI={"Julio C\u00e9sar":"JC","Eunice":"EU","Joshua":"JO","Cristian":"CR"};
+var PTS={A:1,B:2,C:3};
+var FC={"analisis":"#5C6BC0","desarrollo":"#26A69A","revision":"#FFA726","validacion":"#EC407A"};
+var FS=["analisis","desarrollo","revision","validacion"];
+var FL={"analisis":"Analisis","desarrollo":"Desarrollo","revision":"Revision","validacion":"Validacion"};
+var MF={A:{analisis:20,desarrollo:40,revision:20,validacion:20},B:{analisis:40,desarrollo:300,revision:20,validacion:20},C:{analisis:90,desarrollo:600,revision:20,validacion:20}};
+var D=480,W=2400,M=9600,N=4;
+var T=[{"id":1,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Sistemas","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":2,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Subsistemas","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":3,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"M\u00f3dulos","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":4,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Roles","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":5,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Grupos de Trabajo","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":6,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Usuarios","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":7,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Datos de la Entidad","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":8,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Ejercicios Fiscales","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":9,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Per\u00edodos Contables","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":10,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Unidades Administrativas","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":11,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Proveedores","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Cristian","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":12,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Empleados","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":13,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Terceros institucionales","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Cristian","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":14,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Terceros beneficiarios","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Cristian","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":15,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Bancos","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Eunice","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":16,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Chequeras","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":17,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Conceptos Bancarios","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":18,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Tipo de Conceptos Bancarios","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":19,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"COG (Clasificador Obj. Gasto)","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Eunice","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":20,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"CRI (Clasificador Rubro Ing.)","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Eunice","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":21,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Fuentes de Financiamiento","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Cristian","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":22,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Programas","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":23,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Subprogramas","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":24,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Proyectos","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Joshua","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":25,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"Centros de Costos","tipo":"A","pts":1,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Cristian","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":26,"modulo":"0. Cfg. Inicial","subsistema":"Cat\u00e1logos","tarea":"CUCOP","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Eunice","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":27,"modulo":"0. Cfg. Inicial","subsistema":"Procesos","tarea":"Wizard de configuraci\u00f3n inicial","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":28,"modulo":"0. Cfg. Inicial","subsistema":"Procesos","tarea":"Administrador de usuarios","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":29,"modulo":"0. Cfg. Inicial","subsistema":"Informes","tarea":"Bit\u00e1cora de auditor\u00eda","tipo":"B","pts":2,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"Julio C\u00e9sar","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":30,"modulo":"1. Contabilidad","subsistema":"Cat\u00e1logos","tarea":"Cat\u00e1logo de Cuentas (SCG)","tipo":"C","pts":3,"done_analisis":true,"done_desarrollo":true,"done_revision":true,"done_validacion":true,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":31,"modulo":"1. Contabilidad","subsistema":"Cat\u00e1logos","tarea":"Bienes inmuebles","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":32,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"P\u00f3lizas Contables","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":33,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"P\u00f3lizas Presupuestales","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":34,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Afectaci\u00f3n contable individual","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":35,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Hist\u00f3rico","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":36,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Filtros","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":37,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Exportar a Excel","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":38,"modulo":"1. Contabilidad","subsistema":"Registros","tarea":"Modificaciones a interfaz de registro","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":39,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Apertura / Cierre de mes contable","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":40,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Cierre de mes \u2014 consolidaci\u00f3n por usuario","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":41,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Contabilidad maestra","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":42,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Devolver p\u00f3lizas individuales","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":43,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Procesar p\u00f3lizas","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":44,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Afectar p\u00f3lizas","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":45,"modulo":"1. Contabilidad","subsistema":"Procesos","tarea":"Deshacer cierre","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":46,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Libro diario","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":47,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Libro mayor (Auxiliar contable)","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":48,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Actualizaciones a visualizaci\u00f3n de reportes","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":49,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Avance presupuestal de egresos","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":50,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Avance presupuestal de ingresos","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":51,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Balanza de Comprobaci\u00f3n","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":52,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado de actividades","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":53,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado de situaci\u00f3n financiera","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":54,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado de cambios a la situaci\u00f3n financiera","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":55,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado anal\u00edtico del activo","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":56,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado anal\u00edtico de deuda y otros pasivos","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":57,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado de variaci\u00f3n de Hacienda P\u00fablica","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":58,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Estado de Flujo de Efectivo","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":59,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"Notas a los estados financieros (12)","tipo":"\u2014","pts":0,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":0,"min_desarrollo":0,"min_revision":0,"min_validacion":0,"min_total":0,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":60,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"*Libro de inventarios","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":61,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"*Libro de almac\u00e9n","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":62,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"*P\u00f3liza de depreciaci\u00f3n","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":63,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"*P\u00f3liza de almac\u00e9n","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":64,"modulo":"1. Contabilidad","subsistema":"Informes","tarea":"*P\u00f3liza de n\u00f3minas","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":65,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Asignaci\u00f3n Presupuestal","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":66,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Presupuesto de egresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":67,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Techo presupuestal egresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":68,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Presupuesto de ingresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":69,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Techo presupuestal ingresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":70,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"Transferencias Presupuestales","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":71,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"P\u00f3lizas de apertura presupuestal","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":72,"modulo":"2. C. Presupuestal","subsistema":"Registros","tarea":"P\u00f3lizas compromiso servicios personales","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":73,"modulo":"2. C. Presupuestal","subsistema":"Procesos","tarea":"Validaci\u00f3n afectaciones de pedidos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":74,"modulo":"2. C. Presupuestal","subsistema":"Procesos","tarea":"Validaci\u00f3n afectaciones servicios personales","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":75,"modulo":"2. C. Presupuestal","subsistema":"Procesos","tarea":"Validaci\u00f3n afectaciones pagos directos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":76,"modulo":"2. C. Presupuestal","subsistema":"Procesos","tarea":"Validaci\u00f3n afectaciones conceptos de ingresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":77,"modulo":"2. C. Presupuestal","subsistema":"Informes","tarea":"Presupuesto con desglose mensual","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":78,"modulo":"2. C. Presupuestal","subsistema":"Informes","tarea":"Avance presupuestal de egresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":79,"modulo":"2. C. Presupuestal","subsistema":"Informes","tarea":"Avance presupuestal de ingresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":80,"modulo":"2. C. Presupuestal","subsistema":"Informes","tarea":"Presupuesto Calendarizado","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":81,"modulo":"2. C. Presupuestal","subsistema":"Informes","tarea":"Concentrado de transferencias presupuestales","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":82,"modulo":"3. Ctas. por Pagar","subsistema":"Registros","tarea":"Registro de Pagos Directos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":83,"modulo":"3. Ctas. por Pagar","subsistema":"Registros","tarea":"Registro de Gastos Para Comprobar","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":84,"modulo":"3. Ctas. por Pagar","subsistema":"Registros","tarea":"Registro de Pagos derivados de Pedido","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":85,"modulo":"3. Ctas. por Pagar","subsistema":"Registros","tarea":"Registro de Comprobaci\u00f3n de Gastos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":86,"modulo":"3. Ctas. por Pagar","subsistema":"Procesos","tarea":"Verificaci\u00f3n de disponibilidad presupuestal","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":87,"modulo":"3. Ctas. por Pagar","subsistema":"Procesos","tarea":"Afectaci\u00f3n contable y presupuestal","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":88,"modulo":"3. Ctas. por Pagar","subsistema":"Procesos","tarea":"Pagos de n\u00f3mina por transferencia electr\u00f3nica","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":89,"modulo":"3. Ctas. por Pagar","subsistema":"Procesos","tarea":"Pagos de n\u00f3mina por cheque","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":90,"modulo":"3. Ctas. por Pagar","subsistema":"Informes","tarea":"Reporte Multicriterio Cuentas por Pagar","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":91,"modulo":"3. Ctas. por Pagar","subsistema":"Informes","tarea":"Estado de Cuenta de Gastos a Comprobar","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":92,"modulo":"4. Bancos","subsistema":"Registros","tarea":"Reintegros en efectivo e ingresos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":93,"modulo":"4. Bancos","subsistema":"Registros","tarea":"Transferencias entre cuentas bancarias","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":94,"modulo":"4. Bancos","subsistema":"Procesos","tarea":"Afectaci\u00f3n contable y presupuestal / Chequeras","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":95,"modulo":"4. Bancos","subsistema":"Procesos","tarea":"Conciliaci\u00f3n bancaria","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":96,"modulo":"4. Bancos","subsistema":"Procesos","tarea":"Cancelaci\u00f3n de cheques","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":97,"modulo":"4. Bancos","subsistema":"Procesos","tarea":"Cancelaci\u00f3n de reintegros","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":98,"modulo":"4. Bancos","subsistema":"Informes","tarea":"Reporte de Cheques","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":99,"modulo":"4. Bancos","subsistema":"Informes","tarea":"Reporte de Ingresos","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":100,"modulo":"5. Ctas. por Cobrar","subsistema":"Cat\u00e1logos","tarea":"Conceptos de cobro","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":101,"modulo":"5. Ctas. por Cobrar","subsistema":"Registros","tarea":"Registro de cuentas de cobro / Afectaci\u00f3n","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":102,"modulo":"5. Ctas. por Cobrar","subsistema":"Procesos","tarea":"Conciliaci\u00f3n de pago en plantel","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":103,"modulo":"5. Ctas. por Cobrar","subsistema":"Procesos","tarea":"Conciliaci\u00f3n bancaria","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":104,"modulo":"5. Ctas. por Cobrar","subsistema":"Procesos","tarea":"Operaciones bancarias","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":105,"modulo":"5. Ctas. por Cobrar","subsistema":"Informes","tarea":"Reporte Multicriterio Cuentas por Cobrar","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":106,"modulo":"6. Adquisiciones","subsistema":"Cat\u00e1logos","tarea":"Lugares / Plazos de entrega / Departamentos","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":107,"modulo":"6. Adquisiciones","subsistema":"Cat\u00e1logos","tarea":"Montos de licitaci\u00f3n","tipo":"A","pts":1,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":20,"min_desarrollo":40,"min_revision":20,"min_validacion":20,"min_total":100,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":108,"modulo":"6. Adquisiciones","subsistema":"Cat\u00e1logos","tarea":"Grupo de productos / Descripci\u00f3n de art\u00edculos","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":109,"modulo":"6. Adquisiciones","subsistema":"Cat\u00e1logos","tarea":"Proveedores-bienes / Unidades de medida","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":110,"modulo":"6. Adquisiciones","subsistema":"Cat\u00e1logos","tarea":"Tipos de consumibles","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":111,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Solicitudes / Requisiciones \u2014 Compras directas","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":112,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Captura cotizaciones (digitalizaci\u00f3n)","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":113,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Licitaciones \u2014 Captura encabezado y detalle","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":114,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Licitaciones \u2014 Actas y documentos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":115,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Licitaciones \u2014 Captura cotizaciones","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":116,"modulo":"6. Adquisiciones","subsistema":"Registros","tarea":"Pedido / Contrato / Orden de Compra","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":117,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Evaluaci\u00f3n t\u00e9cnica y financiera","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":118,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Asignaci\u00f3n de compra","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":119,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Generaci\u00f3n de requerimiento","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":120,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Licitaciones \u2014 Invitar proveedores","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":121,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Licitaciones \u2014 Asignaci\u00f3n de compra","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":122,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Generar pedidos","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":123,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Autorizaci\u00f3n de pedidos (vinculado a Presupuesto)","tipo":"C","pts":3,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":90,"min_desarrollo":600,"min_revision":20,"min_validacion":20,"min_total":730,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":124,"modulo":"6. Adquisiciones","subsistema":"Procesos","tarea":"Modificar / Cancelar pedidos","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":125,"modulo":"6. Adquisiciones","subsistema":"Informes","tarea":"Consultar pedidos (status)","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"},{"id":126,"modulo":"6. Adquisiciones","subsistema":"Informes","tarea":"Facturas (consulta)","tipo":"B","pts":2,"done_analisis":false,"done_desarrollo":false,"done_revision":false,"done_validacion":false,"min_analisis":40,"min_desarrollo":300,"min_revision":20,"min_validacion":20,"min_total":380,"resp_analisis":"Julio C\u00e9sar","resp_desarrollo":"","resp_revision":"Eunice","resp_validacion":"Julio C\u00e9sar"}];
+var fi="t",at="t";
+var mo=new Set(["0. Cfg. Inicial","1. Contabilidad"]);
+var so=new Set();
 function r1(x){return Math.round(x*10)/10}
-
-function tMinTotal(t){const f=MINS_F[t.tipo]||MINS_F["—"];return f.analisis+f.desarrollo+f.revision+f.validacion}
-
-function subfasesDone(t){
-  return FASES.reduce((s,f)=>s+(t["done_"+f]?1:0),0);
+function tm(t){var f=MF[t.tipo]||{analisis:0,desarrollo:0,revision:0,validacion:0};return f.analisis+f.desarrollo+f.revision+f.validacion}
+function sf(t){return FS.reduce(function(s,f){return s+(t["done_"+f]?1:0)},0)}
+function ck(id){return document.getElementById(id)}
+function calcK(){
+  var tot=T.length,dn=0,ds=0,pt=0,pd=0,mt=0,md=0;
+  T.forEach(function(t){
+    pt+=(PTS[t.tipo]||0);mt+=tm(t);ds+=sf(t);
+    if(t.done==="\u2713"){dn++;pd+=(PTS[t.tipo]||0);md+=tm(t)}
+  });
+  var av=pt>0?Math.round(pd/pt*100):0;
+  var asf=Math.round(ds/504*100);
+  var rs=mt-md;
+  ck("kAv").textContent=av+"%";
+  ck("kTr").innerHTML="<b>"+dn+"</b>/"+tot+" tar &nbsp;<b>"+pd+"</b>/"+pt+" pts";
+  ck("kSf").textContent=asf+"%";
+  ck("kSfS").innerHTML="<b>"+ds+"</b>/504 subfases";
+  ck("kMn").textContent=md.toLocaleString();
+  ck("kMnS").innerHTML="<b>"+r1(md/(N*D))+"</b>d &nbsp;<b>"+r1(md/(N*W))+"</b>s";
+  ck("kRs").textContent=r1(rs/(N*D));
+  ck("kRsS").innerHTML="<span>"+r1(rs/(N*W))+"</span>s &nbsp;<span>"+r1(rs/(N*M))+"</span>m";
 }
-
-function calcKPIs(){
-  const total=tareas.length;
-  const doneTareas=tareas.filter(t=>t.done==="✓").length;
-  const totalSub=total*4;
-  const doneSub=tareas.reduce((s,t)=>s+subfasesDone(t),0);
-  const ptsT=tareas.reduce((s,t)=>s+PTS[t.tipo],0);
-  const ptsDone=tareas.filter(t=>t.done==="✓").reduce((s,t)=>s+PTS[t.tipo],0);
-  const minsT=tareas.reduce((s,t)=>s+tMinTotal(t),0);
-  const minsDone=tareas.filter(t=>t.done==="✓").reduce((s,t)=>s+tMinTotal(t),0);
-  const avPts=ptsT>0?Math.round(ptsDone/ptsT*100):0;
-  const avSub=totalSub>0?Math.round(doneSub/totalSub*100):0;
-  const avMin=minsT>0?Math.round(minsDone/minsT*100):0;
-  const rest=minsT-minsDone;
-
-  document.getElementById("kAv").textContent=avPts+"%";
-  document.getElementById("kTr").innerHTML=`<b>${doneTareas}</b>/${total} tar &nbsp; <b>${ptsDone}</b>/${ptsT} pts`;
-  document.getElementById("kSub").textContent=avSub+"%";
-  document.getElementById("kSubS").innerHTML=`<b>${doneSub}</b>/${totalSub} subfases &nbsp;(${avMin}% min)`;
-  document.getElementById("kMin").textContent=minsDone.toLocaleString();
-  document.getElementById("kMinS").innerHTML=`<b>${r1(minsDone/(N*D))}</b>d &nbsp;<b>${r1(minsDone/(N*W))}</b>s &nbsp;<b>${r1(minsDone/(N*M))}</b>m`;
-  document.getElementById("kRest").textContent=r1(rest/(N*D));
-  document.getElementById("kRestS").innerHTML=`<span>${r1(rest/(N*W))}</span> sem &nbsp;<span>${r1(rest/(N*M))}</span> mes`;
-}
-
-function visFiltradas(){
-  const q=document.getElementById("srch").value.toLowerCase();
-  return tareas.filter(t=>{
-    const qm=!q||t.tarea.toLowerCase().includes(q)||t.modulo.toLowerCase().includes(q)||t.subsistema.toLowerCase().includes(q);
-    const fm=filtro==="t"||(filtro==="d"&&t.done==="✓")||(filtro==="p"&&t.done!=="✓");
+function vis(){
+  var q=ck("srch").value.toLowerCase();
+  return T.filter(function(t){
+    var qm=!q||t.tarea.toLowerCase().indexOf(q)>=0||t.modulo.toLowerCase().indexOf(q)>=0;
+    var fm=fi==="t"||(fi==="d"&&t.done==="\u2713")||(fi==="p"&&t.done!=="\u2713");
     return qm&&fm;
   });
 }
-
 function render(){
-  const vis=visFiltradas();
-  const cont=document.getElementById("modsCont");
-  if(!vis.length){cont.innerHTML='<div class="ld">Sin resultados</div>';return}
-
-  const pm={};
-  MODS.forEach(m=>pm[m]={});
-  vis.forEach(t=>{
+  var v=vis(),cont=ck("MC");
+  if(!v.length){cont.innerHTML="<p style='padding:20px;text-align:center;color:var(--t2)'>Sin resultados</p>";return}
+  var pm={};
+  MODS.forEach(function(m){pm[m]={}});
+  v.forEach(function(t){
     if(!pm[t.modulo])pm[t.modulo]={};
     if(!pm[t.modulo][t.subsistema])pm[t.modulo][t.subsistema]=[];
     pm[t.modulo][t.subsistema].push(t);
   });
-
-  let h="";
-  MODS.forEach(mod=>{
-    const subs=pm[mod];
+  var h="";
+  MODS.forEach(function(mod){
+    var subs=pm[mod];
     if(!subs||!Object.keys(subs).length)return;
-    const all=Object.values(subs).flat();
-    const done=all.filter(t=>t.done==="✓").length;
-    const doneSub=all.reduce((s,t)=>s+subfasesDone(t),0);
-    const totalSub=all.length*4;
-    const pct=all.length?Math.round(done/all.length*100):0;
-    const pctSub=totalSub?Math.round(doneSub/totalSub*100):0;
-    const op=modOpen.has(mod);
-    const bg=pct===100?"#1D9E75":pct>0?"#378ADD":"#888780";
-
-    h+=`<div class="mc">
-      <div class="mh" onclick="togMod(${JSON.stringify(mod)})">
-        <span class="chev ${op?"op":""}">&#9654;</span>
-        <span class="mn">${mod}</span>
-        <div class="ms">
-          <span class="pp" style="background:${bg}">${pct}%</span>
-          <div class="pb"><div class="pf" style="width:${pct}%;background:${bg}"></div></div>
-          <span style="font-size:10px;color:var(--t3)">${done}/${all.length} | ${doneSub}/${totalSub} sf</span>
-        </div>
-      </div>`;
-
+    var all=[],dn=0,dsf=0;
+    Object.values(subs).forEach(function(a){all=all.concat(a)});
+    all.forEach(function(t){if(t.done==="\u2713")dn++;dsf+=sf(t)});
+    var pct=all.length?Math.round(dn/all.length*100):0;
+    var op=mo.has(mod);
+    var bg=pct===100?"#1D9E75":pct>0?"#378ADD":"#888780";
+    h+='<div class="mc">';
+    h+='<div class="mh" onclick="togM('+JSON.stringify(mod)+')">';
+    h+='<span class="chev '+(op?"op":"")+'">&#9654;</span>';
+    h+='<span class="mn">'+mod+'</span>';
+    h+='<div class="ms"><span class="pp" style="background:'+bg+'">'+pct+'%</span>';
+    h+='<div class="pb"><div class="pf" style="width:'+pct+'%;background:'+bg+'"></div></div>';
+    h+='<span style="font-size:10px;color:var(--t3)">'+dn+'/'+all.length+' | '+dsf+'/'+(all.length*4)+'sf</span></div></div>';
     if(op){
-      SUBS.forEach(sub=>{
-        const items=subs[sub];
+      SUBS.forEach(function(sub){
+        var items=subs[sub];
         if(!items||!items.length)return;
-        const dc=CAT_C[sub]||"#888";
-        const dt=items.filter(t=>t.done==="✓").length;
-        const ds=items.reduce((s,t)=>s+subfasesDone(t),0);
-        const ts=items.length*4;
-        const sk=mod+"||"+sub;
-        const sop=subOpen.has(sk);
-
-        h+=`<div class="sub">
-          <div class="sh" onclick="togSub(${JSON.stringify(sk)})">
-            <span class="sd" style="background:${dc}"></span>
-            <span class="sn">${sub}</span>
-            <span class="sc">${dt}/${items.length} tar &nbsp; ${ds}/${ts} sf</span>
-          </div>`;
-
+        var dc=CC[sub]||"#888";
+        var dt=0,ds2=0;
+        items.forEach(function(t){if(t.done==="\u2713")dt++;ds2+=sf(t)});
+        var sk=mod+"||"+sub,sop=so.has(sk);
+        h+='<div class="sub">';
+        h+='<div class="sh" onclick="togS('+JSON.stringify(sk)+')">';
+        h+='<span class="sd" style="background:'+dc+'"></span>';
+        h+='<span class="sn">'+sub+'</span>';
+        h+='<span class="sc">'+dt+'/'+items.length+' | '+ds2+'/'+(items.length*4)+'sf</span></div>';
         if(sop){
-          items.forEach(t=>{
-            const done=t.done==="✓";
-            const tc=t.tipo==="A"?"tA":t.tipo==="B"?"tB":t.tipo==="C"?"tC":"tD";
-            const f=MINS_F[t.tipo]||MINS_F["—"];
-            const mT=f.analisis+f.desarrollo+f.revision+f.validacion;
-
-            // dots de progreso subfases
-            const dots=FASES.map(fase=>{
-              const on=t["done_"+fase];
-              return `<span class="sf-dot" style="background:${on?FASE_C[fase]:"var(--bg3)"}; color:${on?"#fff":"var(--t3)"}">${on?"✓":"·"}</span>`;
+          items.forEach(function(t){
+            var dn=t.done==="\u2713";
+            var tc=t.tipo==="A"?"tA":t.tipo==="B"?"tB":t.tipo==="C"?"tC":"tX";
+            var f=MF[t.tipo]||{analisis:0,desarrollo:0,revision:0,validacion:0};
+            var mT=f.analisis+f.desarrollo+f.revision+f.validacion;
+            var dots=FS.map(function(fa){
+              var on=t["done_"+fa];
+              return '<span class="sfd" style="background:'+(on?FC[fa]:"var(--bg3)")+';color:'+(on?"#fff":"var(--t3)")+'">'+( on?"&#10003;":"&middot;")+'</span>';
             }).join("");
-
-            const fasesHtml=FASES.map(fase=>{
-              const on=t["done_"+fase];
-              const mins=f[fase];
-              const resp=t["resp_"+fase]||"";
-              const opts=MIEMB.map(m=>`<option value="${m.replace(/"/g,"&quot;")}"${resp===m?" selected":""}>${m||"—"}</option>`).join("");
-              return `<div class="fc" style="border-top:2px solid ${FASE_C[fase]}">
-                <div class="fc-l" style="color:${FASE_C[fase]}">${FASE_L[fase]} · ${mins}min</div>
-                <div class="fc-chk" onclick="togFase(${t.id},'${fase}')">
-                  <span class="fc-chk-box ${on?"on":""}"></span>
-                  <span class="fc-chk-lbl">${on?"Completado":"Pendiente"}</span>
-                </div>
-                <select class="fc-sel" onchange="updResp(${t.id},'resp_${fase}',this.value)">${opts}</select>
-              </div>`;
+            var fasH=FS.map(function(fa){
+              var on=t["done_"+fa];
+              var mins=f[fa];
+              var resp=t["resp_"+fa]||"";
+              var opts=MB.map(function(m){return '<option value="'+m+'"'+(resp===m?" selected":"")+'>'+( m||"-")+'</option>'}).join("");
+              return '<div class="fc" style="border-top:2px solid '+FC[fa]+';">'
+                +'<div class="fl2" style="color:'+FC[fa]+'">'+FL[fa]+' &middot; '+mins+'m</div>'
+                +'<div class="fck" onclick="togF('+t.id+',"'+fa+'")">'
+                +'<span class="fckb '+(on?"on":"")+'"></span>'
+                +'<span class="fckl">'+(on?"Listo":"Pendiente")+'</span></div>'
+                +'<select class="fcs" onchange="updR('+t.id+',"resp_'+fa+'",this.value)">'+opts+'</select></div>';
             }).join("");
-
-            h+=`<div class="tr ${done?"done-r":""}">
-              <div class="tr-top">
-                <div class="chk ${done?"on":""}" onclick="togDone(${t.id})"></div>
-                <span class="tn ${done?"dt":""}">${t.tarea}</span>
-                <span class="tt ${tc}">${t.tipo}</span>
-              </div>
-              <div style="display:flex;gap:4px;align-items:center;margin-bottom:5px">
-                ${dots}
-                <span style="font-size:10px;color:var(--t3);margin-left:4px">${subfasesDone(t)}/4 fases</span>
-              </div>
-              <div class="fg">${fasesHtml}</div>
-              <div class="tr-t">
-                <span>Total: <b>${mT} min</b></span>
-                <span>Días: <b>${r1(mT/D)}</b></span>
-                <span>Sem: <b>${r1(mT/W)}</b></span>
-                <span>Mes: <b>${r1(mT/M)}</b></span>
-              </div>
-            </div>`;
+            h+='<div class="tr '+(dn?"dr":"")+'"><div class="tr-top">';
+            h+='<div class="chk '+(dn?"on":"")+'" onclick="togD('+t.id+')"></div>';
+            h+='<span class="tn '+(dn?"dt":"")+'">'+t.tarea+'</span>';
+            h+='<span class="tt '+tc+'">'+t.tipo+'</span></div>';
+            h+='<div class="sfp">'+dots+'<span style="font-size:10px;color:var(--t3);margin-left:4px">'+sf(t)+'/4</span></div>';
+            h+='<div class="fg">'+fasH+'</div>';
+            h+='<div class="tr-t"><span>Total: <b>'+mT+' min</b></span><span>Dias: <b>'+r1(mT/D)+'</b></span><span>Sem: <b>'+r1(mT/W)+'</b></span></div></div>';
           });
         }
-        h+=`</div>`;
+        h+='</div>';
       });
     }
-    h+=`</div>`;
+    h+='</div>';
   });
   cont.innerHTML=h;
 }
-
-function renderFuerza(){
-  const mf={};
-  MIEMB.filter(m=>m).forEach(m=>mf[m]={analisis:0,desarrollo:0,revision:0,validacion:0});
-  tareas.forEach(t=>{
-    FASES.forEach(fase=>{
-      if(!t["done_"+fase])return;
-      const resp=t["resp_"+fase];
-      if(resp&&mf[resp]){
-        const f=MINS_F[t.tipo]||MINS_F["—"];
-        mf[resp][fase]+=f[fase];
-      }
+function renderF(){
+  var mf={};
+  MB.filter(function(m){return m}).forEach(function(m){mf[m]={analisis:0,desarrollo:0,revision:0,validacion:0}});
+  T.forEach(function(t){
+    FS.forEach(function(fa){
+      if(!t["done_"+fa])return;
+      var resp=t["resp_"+fa];
+      if(resp&&mf[resp]){var f=MF[t.tipo]||{analisis:0,desarrollo:0,revision:0,validacion:0};mf[resp][fa]+=f[fa]}
     });
   });
-  const totEq=Object.values(mf).reduce((s,v)=>s+v.analisis+v.desarrollo+v.revision+v.validacion,0);
-  const minsDone=tareas.filter(t=>t.done==="✓").reduce((s,t)=>s+tMinTotal(t),0);
-  const minsTotal=tareas.reduce((s,t)=>s+tMinTotal(t),0);
-  const minsRest=minsTotal-minsDone;
-  const doneSub=tareas.reduce((s,t)=>s+subfasesDone(t),0);
-
-  let h=`<div class="sys-g">
-    <div class="kc"><div class="kv" style="color:var(--gr)">${minsDone.toLocaleString()} min</div><div class="kl">Consumidos equipo</div>
-      <div class="ks"><b>${r1(minsDone/(N*D))}</b>d &nbsp;<b>${r1(minsDone/(N*W))}</b>s &nbsp;<b>${r1(minsDone/(N*M))}</b>m</div></div>
-    <div class="kc"><div class="kv" style="color:var(--am)">${minsRest.toLocaleString()} min</div><div class="kl">Restantes equipo</div>
-      <div class="ks"><span>${r1(minsRest/(N*D))}</span>d &nbsp;<span>${r1(minsRest/(N*W))}</span>s &nbsp;<span>${r1(minsRest/(N*M))}</span>m</div></div>
-    <div class="kc"><div class="kv" style="color:var(--t2)">${minsTotal.toLocaleString()} min</div><div class="kl">Total sistema</div>
-      <div class="ks"><b>${r1(minsTotal/(N*D))}</b>d &nbsp;<b>${r1(minsTotal/(N*W))}</b>s</div></div>
-    <div class="kc"><div class="kv" style="color:var(--pu)">${doneSub}/${TOTAL_SUBFASES}</div><div class="kl">Subfases completadas</div>
-      <div class="ks"><b>${Math.round(doneSub/TOTAL_SUBFASES*100)}%</b> avance</div></div>
-  </div>`;
-
-  ["Julio César","Eunice","Joshua","Cristian"].forEach(m=>{
-    const f=mf[m]||{analisis:0,desarrollo:0,revision:0,validacion:0};
-    const tot=f.analisis+f.desarrollo+f.revision+f.validacion;
-    const pct=totEq>0?r1(tot/totEq*100):0;
-    const col=COLORES[m]||["#f1efe8","#444","#888"];
-    const ini=INI[m]||m.slice(0,2).toUpperCase();
-    h+=`<div class="fcard">
-      <div class="fh">
-        <div class="av" style="background:${col[0]};color:${col[1]}">${ini}</div>
-        <div><div class="fnh">${m}</div><div class="fsub">${pct}% fuerza de trabajo</div></div>
-        <div class="fpct"><div class="fpv" style="color:${col[1]}">${pct}%</div><div class="fpl">fuerza</div></div>
-      </div>
-      <div class="f4">
-        ${FASES.map(fase=>`<div class="f4c" style="border-top:2px solid ${FASE_C[fase]}">
-          <div class="f4l" style="color:${FASE_C[fase]}">${FASE_L[fase]}</div>
-          <div class="f4v" style="color:${col[1]}">${f[fase].toLocaleString()} min</div>
-          <div class="f4m">${r1(f[fase]/60)}h &nbsp;·&nbsp; ${r1(f[fase]/D)} días</div>
-        </div>`).join("")}
-      </div>
-      <div class="divider"></div>
-      <div class="fbh"><span>Fuerza acumulada</span><span><b>${tot.toLocaleString()} min · ${r1(tot/60)}h · ${r1(tot/W)} sem</b></span></div>
-      <div class="fbar"><div class="fbar-f" style="width:${pct}%;background:${col[2]}"></div></div>
-      <div class="ftg">
-        <div class="ftc"><div class="ftl">Minutos totales</div><div class="ftv"><span class="ftn">${tot.toLocaleString()}</span></div></div>
-        <div class="ftc"><div class="ftl">Días · Semanas</div><div class="ftv"><span class="ftn">${r1(tot/D)}</span><span class="ftr">· ${r1(tot/W)}</span></div></div>
-        <div class="ftc"><div class="ftl">Meses consumidos</div><div class="ftv"><span class="ftn">${r1(tot/M)}</span></div></div>
-      </div>
-    </div>`;
+  var totEq=Object.values(mf).reduce(function(s,v){return s+v.analisis+v.desarrollo+v.revision+v.validacion},0);
+  var md=T.filter(function(t){return t.done==="\u2713"}).reduce(function(s,t){return s+tm(t)},0);
+  var mt=T.reduce(function(s,t){return s+tm(t)},0);
+  var mr=mt-md;
+  var dsf=T.reduce(function(s,t){return s+sf(t)},0);
+  var h='<div class="sg">';
+  h+='<div class="kc"><div class="kv" style="color:var(--gr)">'+md.toLocaleString()+' min</div><div class="kl">Consumidos equipo</div><div class="ks"><b>'+r1(md/(N*D))+'</b>d &nbsp;<b>'+r1(md/(N*W))+'</b>s</div></div>';
+  h+='<div class="kc"><div class="kv" style="color:var(--am)">'+mr.toLocaleString()+' min</div><div class="kl">Restantes equipo</div><div class="ks"><span>'+r1(mr/(N*D))+'</span>d &nbsp;<span>'+r1(mr/(N*W))+'</span>s</div></div>';
+  h+='<div class="kc"><div class="kv" style="color:var(--t2)">'+mt.toLocaleString()+' min</div><div class="kl">Total sistema</div><div class="ks"><b>'+r1(mt/(N*D))+'</b>d &nbsp;<b>'+r1(mt/(N*W))+'</b>s</div></div>';
+  h+='<div class="kc"><div class="kv" style="color:var(--pu)">'+dsf+'/504</div><div class="kl">Subfases completas</div><div class="ks"><b>'+Math.round(dsf/504*100)+'%</b></div></div></div>';
+  ["Julio C\u00e9sar","Eunice","Joshua","Cristian"].forEach(function(m){
+    var f=mf[m]||{analisis:0,desarrollo:0,revision:0,validacion:0};
+    var tot=f.analisis+f.desarrollo+f.revision+f.validacion;
+    var pct=totEq>0?r1(tot/totEq*100):0;
+    var col=COL[m]||["#f1efe8","#444","#888"];
+    var ini=INI[m]||m.slice(0,2).toUpperCase();
+    h+='<div class="fcard">';
+    h+='<div class="fh"><div class="av" style="background:'+col[0]+';color:'+col[1]+'">'+ini+'</div>';
+    h+='<div><div class="fnh">'+m+'</div><div class="fsb">'+pct+'% fuerza de trabajo</div></div>';
+    h+='<div class="fpc"><div class="fpv" style="color:'+col[1]+'">'+pct+'%</div><div class="fpl">fuerza</div></div></div>';
+    h+='<div class="f4">';
+    FS.forEach(function(fa){
+      h+='<div class="f4c" style="border-top:2px solid '+FC[fa]+';">';
+      h+='<div class="f4l" style="color:'+FC[fa]+'">'+FL[fa]+'</div>';
+      h+='<div class="f4v" style="color:'+col[1]+'">'+f[fa].toLocaleString()+' min</div>';
+      h+='<div class="f4m">'+r1(f[fa]/60)+'h &middot; '+r1(f[fa]/D)+' dias</div></div>';
+    });
+    h+='</div><div class="dv"></div>';
+    h+='<div class="fbh"><span>Fuerza acumulada</span><span><b>'+tot.toLocaleString()+' min &middot; '+r1(tot/60)+'h &middot; '+r1(tot/W)+' sem</b></span></div>';
+    h+='<div class="fbar"><div class="fbar-f" style="width:'+pct+'%;background:'+col[2]+'"></div></div>';
+    h+='<div class="ftg">';
+    h+='<div class="ftc"><div class="ftl">Minutos</div><div class="ftv"><span class="ftn">'+tot.toLocaleString()+'</span></div></div>';
+    h+='<div class="ftc"><div class="ftl">Dias / Semanas</div><div class="ftv"><span class="ftn">'+r1(tot/D)+'</span><span class="ftr">&middot; '+r1(tot/W)+'</span></div></div>';
+    h+='<div class="ftc"><div class="ftl">Meses</div><div class="ftv"><span class="ftn">'+r1(tot/M)+'</span></div></div>';
+    h+='</div></div>';
   });
-  document.getElementById("fuerzaCont").innerHTML=h;
+  ck("FC").innerHTML=h;
 }
-
-// === ACCIONES ===
-function togDone(id){
-  const t=tareas.find(x=>x.id===id); if(!t)return;
-  t.done=t.done==="✓"?"":"✓";
-  // Marcar/desmarcar todas las subfases
-  FASES.forEach(f=>t["done_"+f]=t.done==="✓");
-  upd();
-  toast(t.done==="✓"?"✓ Tarea completa":"Tarea desmarcada");
-  sync("updateDone",{id,valor:t.done==="✓"});
+function togD(id){
+  var t=T.find(function(x){return x.id===id});if(!t)return;
+  t.done=t.done==="\u2713"?"":"\u2713";
+  FS.forEach(function(f){t["done_"+f]=t.done==="\u2713"});
+  upd();toast(t.done==="\u2713"?"Tarea completa":"Desmarcada");
+  post({action:"updateDone",id:id,valor:t.done==="\u2713"});
 }
-
-function togFase(id,fase){
-  const t=tareas.find(x=>x.id===id); if(!t)return;
-  t["done_"+fase]=!t["done_"+fase];
-  // Si todas las fases están done → marcar tarea done
-  const allDone=FASES.every(f=>t["done_"+f]);
-  t.done=allDone?"✓":"";
-  upd();
-  toast(t["done_"+fase]?`✓ ${FASE_L[fase]} completado`:`${FASE_L[fase]} desmarcado`);
-  sync("updateFase",{id,campo:"done_"+fase,valor:t["done_"+fase]?"✓":""});
-  if(allDone) sync("updateDone",{id,valor:true});
+function togF(id,fa){
+  var t=T.find(function(x){return x.id===id});if(!t)return;
+  t["done_"+fa]=!t["done_"+fa];
+  t.done=FS.every(function(f){return t["done_"+f]})?"\u2713":"";
+  upd();toast(t["done_"+fa]?FL[fa]+" listo":FL[fa]+" desmarcado");
+  post({action:"updateFase",id:id,campo:"done_"+fa,valor:t["done_"+fa]?"\u2713":""});
 }
-
-function updResp(id,campo,valor){
-  const t=tareas.find(x=>x.id===id); if(!t)return;
+function updR(id,campo,valor){
+  var t=T.find(function(x){return x.id===id});if(!t)return;
   t[campo]=valor;
-  if(activeTab==="f") renderFuerza();
-  sync("updateFase",{id,campo,valor});
+  if(at==="f")renderF();
+  post({action:"updateFase",id:id,campo:campo,valor:valor});
 }
-
-function upd(){calcKPIs();render();if(activeTab==="f")renderFuerza()}
-
-function togMod(m){modOpen.has(m)?modOpen.delete(m):modOpen.add(m);render()}
-function togSub(k){subOpen.has(k)?subOpen.delete(k):subOpen.add(k);render()}
-function filt(f,btn){filtro=f;document.querySelectorAll(".fb").forEach(b=>b.classList.remove("on"));btn.classList.add("on");render()}
-
-function tab(t,btn){
-  activeTab=t;
-  document.querySelectorAll(".tab").forEach(b=>b.classList.remove("on"));btn.classList.add("on");
-  document.getElementById("pT").style.display=t==="t"?"block":"none";
-  document.getElementById("pF").style.display=t==="f"?"block":"none";
-  if(t==="f")renderFuerza();
+function upd(){calcK();render();if(at==="f")renderF()}
+function togM(m){mo.has(m)?mo.delete(m):mo.add(m);render()}
+function togS(k){so.has(k)?so.delete(k):so.add(k);render()}
+function filt(f,btn){fi=f;document.querySelectorAll(".fb").forEach(function(b){b.classList.remove("on")});btn.classList.add("on");render()}
+function cambiaTab(t,btn){
+  at=t;
+  document.querySelectorAll(".tab").forEach(function(b){b.classList.remove("on")});btn.classList.add("on");
+  ck("pT").style.display=t==="t"?"block":"none";
+  ck("pF").style.display=t==="f"?"block":"none";
+  if(t==="f")renderF();
 }
-
-// === SYNC ===
-async function sync(action,data){
-  if(URL_GAS==="TU_URL_DE_APPS_SCRIPT_AQUI")return;
-  try{await fetch(URL_GAS,{method:"POST",body:JSON.stringify({action,...data})});}catch(e){}
+function post(data){
+  try{fetch(GAS,{method:"POST",body:JSON.stringify(data)})}catch(e){}
 }
-
-async function guardar(){
-  if(URL_GAS==="TU_URL_DE_APPS_SCRIPT_AQUI"){toast("Configura la URL de Apps Script primero");return}
-  toast("Guardando todo...");
-  const payload=tareas.map(t=>({
-    id:t.id, done:t.done,
-    done_analisis:t.done_analisis?"✓":"",
-    done_desarrollo:t.done_desarrollo?"✓":"",
-    done_revision:t.done_revision?"✓":"",
-    done_validacion:t.done_validacion?"✓":"",
+function guardar(){
+  toast("Guardando...");
+  var payload=T.map(function(t){return {
+    id:t.id,done:t.done,
+    done_analisis:t.done_analisis?"\u2713":"",
+    done_desarrollo:t.done_desarrollo?"\u2713":"",
+    done_revision:t.done_revision?"\u2713":"",
+    done_validacion:t.done_validacion?"\u2713":"",
     resp_analisis:t.resp_analisis||"",
     resp_desarrollo:t.resp_desarrollo||"",
     resp_revision:t.resp_revision||"",
     resp_validacion:t.resp_validacion||""
-  }));
-  try{
-    const r=await fetch(URL_GAS,{method:"POST",body:JSON.stringify({action:"bulkUpdate",tareas:payload})});
-    const d=await r.json();
-    toast(d.ok?`Guardado ✓ (${d.updated} tareas)`:"Error al guardar");
-  }catch(e){toast("Error de conexión")}
+  }});
+  fetch(GAS,{method:"POST",body:JSON.stringify({action:"bulkUpdate",tareas:payload})})
+    .then(function(r){return r.json()})
+    .then(function(d){toast(d.ok?"Guardado ("+d.updated+" tareas)":"Error al guardar")})
+    .catch(function(){toast("Error de conexion")});
 }
-
-async function sincronizar(){
-  if(URL_GAS==="TU_URL_DE_APPS_SCRIPT_AQUI"){toast("Modo demo — configura la URL");return}
+function sincronizar(){
   toast("Sincronizando...");
-  try{
-    const r=await fetch(URL_GAS+"?action=getTareas");
-    const d=await r.json();
-    if(d.ok){
-      d.tareas.forEach(rem=>{
-        const loc=tareas.find(t=>t.id==rem.id);
+  fetch(GAS+"?action=getTareas")
+    .then(function(r){return r.json()})
+    .then(function(d){
+      if(!d.ok){toast("Error del servidor");return}
+      d.tareas.forEach(function(rem){
+        var loc=T.find(function(t){return t.id==rem.id});
         if(!loc)return;
         loc.done=rem.done||"";
-        FASES.forEach(f=>{loc["done_"+f]=rem["done_"+f]==="✓";});
-        ["resp_analisis","resp_desarrollo","resp_revision","resp_validacion"].forEach(c=>{loc[c]=rem[c]||""});
+        FS.forEach(function(f){loc["done_"+f]=rem["done_"+f]==="\u2713"});
+        ["resp_analisis","resp_desarrollo","resp_revision","resp_validacion"].forEach(function(c){loc[c]=rem[c]||""});
       });
-      upd();
-      toast("Sincronizado ✓");
-    }
-  }catch(e){toast("Error de conexión")}
+      upd();toast("Sincronizado");
+    })
+    .catch(function(){toast("Error de conexion")});
 }
-
 function toast(msg){
-  const el=document.getElementById("toast");
-  el.textContent=msg;el.classList.add("on");
-  clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("on"),2400);
+  var el=ck("tst");el.textContent=msg;el.classList.add("on");
+  clearTimeout(el._t);el._t=setTimeout(function(){el.classList.remove("on")},2400);
 }
-
-// INIT
-calcKPIs();
+calcK();
 render();
 </script>
 </body>
